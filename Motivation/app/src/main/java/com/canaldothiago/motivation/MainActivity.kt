@@ -24,10 +24,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        binding.buttonNewSentence.setOnClickListener(this)
+        setListeners()
     }
 
-    override fun onClick(v: View?) {
-        TODO("Not yet implemented")
+    override fun onClick(v: View) {
+        if (v.id == R.id.button_new_sentence) {
+            handleNewSentence()
+        }
+    }
+
+    private fun handleNewSentence() {
+
+    }
+
+    private fun setListeners() {
+        binding.buttonNewSentence.setOnClickListener(this)
     }
 }
