@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple"
-    tools:context=".UserViewActivity">
+    tools:context=".ui.UserViewActivity">
 
     <TextView
         android:id="@+id/textview_shall_we_begin"

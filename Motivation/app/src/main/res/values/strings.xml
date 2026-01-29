@@ -15,4 +15,8 @@
     <string name="desc_ic_all">Icone Geral</string>
     <string name="desc_ic_happy">Icone Feliz</string>
     <string name="desc_ic_sun">Icone Sol</string>
+
+    <!-- Error -->
+    <string name="error_username_empty">O nome não pode ser vazio!</string>
+
 </resources>
