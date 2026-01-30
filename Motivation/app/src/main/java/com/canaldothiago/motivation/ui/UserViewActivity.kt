@@ -8,9 +8,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.canaldothiago.motivation.helpers.MotivationConstants
 import com.canaldothiago.motivation.R
 import com.canaldothiago.motivation.databinding.ActivityUserViewBinding
-import com.canaldothiago.motivation.helpers.SecurityPreferences
+import com.canaldothiago.motivation.repository.SecurityPreferences
 
 class UserViewActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -33,6 +34,7 @@ class UserViewActivity : AppCompatActivity(), View.OnClickListener {
             insets
         }
         setListeners()
+        verifyUserName()
     }
 
     override fun onClick(v: View) {
@@ -40,17 +42,25 @@ class UserViewActivity : AppCompatActivity(), View.OnClickListener {
             handleSave()
         }
     }
+
+    private fun verifyUserName() {
+        val name = securityPreferences.getString(MotivationConstants.KEY.USERNAME)
+        if (name.isNotEmpty()) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+
+    }
+
     /** Valida e salva o nome do usuário no shared preferences. */
     private fun handleSave() {
         val name = binding.edittextUsername.text.toString()
-
         if (name.isEmpty()) {
             Toast.makeText(this, R.string.error_username_empty, Toast.LENGTH_SHORT).show()
             return
         }
-        securityPreferences.storeString("username", name)
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        securityPreferences.storeString(MotivationConstants.KEY.USERNAME, name)
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 

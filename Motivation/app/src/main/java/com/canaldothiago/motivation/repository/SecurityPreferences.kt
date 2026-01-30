@@ -1,4 +1,4 @@
-package com.canaldothiago.motivation.helpers
+package com.canaldothiago.motivation.repository
 
 import android.content.Context
 import androidx.core.content.edit

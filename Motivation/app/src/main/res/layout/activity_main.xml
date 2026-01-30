@@ -38,7 +38,7 @@
         android:src="@drawable/ic_happy" />
 
     <ImageView
-        android:id="@+id/imageview_sun"
+        android:id="@+id/imageview_sunny"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_alignTop="@id/view_header"
