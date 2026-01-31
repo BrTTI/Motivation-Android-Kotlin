@@ -14,7 +14,7 @@
         android:layout_marginTop="64dp"
         android:fontFamily="@font/cabin"
         android:gravity="center"
-        android:text="@string/title_shall_we_begin"
+        android:text="@string/label_shall_we_begin"
         android:textColor="@color/white"
         android:textSize="32sp" />
 
@@ -28,7 +28,7 @@
         android:backgroundTint="@color/dark_purple"
         android:fontFamily="@font/cabin"
         android:gravity="center"
-        android:hint="@string/title_username"
+        android:hint="@string/label_username"
         android:inputType="text"
         android:textColorHint="@color/white"
         android:textColor="@color/white"

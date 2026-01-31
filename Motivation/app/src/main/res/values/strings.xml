@@ -2,21 +2,21 @@
     <string name="app_name">Motivation</string>
 
     <!-- Titles -->
-    <string name="title_hello">Olá, </string>
-    <string name="title_msg_motivation">Riscos dever sem corrigidos, porque o maior perigo é não arriscar nada!</string>
-    <string name="title_username">Qual seu nome?</string>
-    <string name="title_shall_we_begin">Vamos começar?</string>
+    <string name="label_hello">Olá, </string>
+    <string name="label_msg_motivation">Riscos dever sem corrigidos, porque o maior perigo é não arriscar nada!</string>
+    <string name="label_username">Qual seu nome?</string>
+    <string name="label_shall_we_begin">Vamos começar?</string>
     
     <!-- Buttons -->
     <string name="button_new_sentence">NOVA FRASE</string>
     <string name="button_save">SALVAR</string>
     
     <!-- Descriptions -->
-    <string name="desc_ic_all">Icone Geral</string>
-    <string name="desc_ic_happy">Icone Feliz</string>
-    <string name="desc_ic_sun">Icone Sol</string>
+    <string name="desc_ic_all">Filtrar por todas as frases</string>
+    <string name="desc_ic_happy">Filtrar por frases alegres</string>
+    <string name="desc_ic_sun">Filtrar por frases de sol</string>
 
     <!-- Error -->
-    <string name="error_username_empty">O nome não pode ser vazio!</string>
+    <string name="error_username_empty">O nome não pode estar vazio!</string>
 
 </resources>

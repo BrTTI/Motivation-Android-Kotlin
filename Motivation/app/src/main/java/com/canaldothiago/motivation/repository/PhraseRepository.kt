@@ -25,7 +25,7 @@ class PhraseRepository {
             return listPhrase[Random.nextInt(listPhrase.size)].description
         } else {
             val filtered = listPhrase.filter {
-                (it.category == filter || filter == MotivationConstants.PHRASE.ALL)
+                (it.category == filter)
             }
             return filtered[Random.nextInt(filtered.size)].description
         }

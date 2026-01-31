@@ -26,20 +26,28 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Esconde a barra de ação
+        supportActionBar?.hide()
+
+        // Inicialização de dados
         securityPreferences = SecurityPreferences(this)
 
-
+        // Configuração de Insets (Edge-to-Edge)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // Inicialização de métodos
         setListeners()
-        getStoredUsername()
+        getStoredStrings()
         handleFilter(R.id.imageview_all)
         refreshPhrase()
     }
 
+
+    /** Método para tratamento de eventos de clique */
     override fun onClick(v: View) {
         when (v.id) {
             R.id.button_new_sentence -> refreshPhrase()
@@ -49,44 +57,63 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+
+    /** Atualiza o texto da frase de motivação */
     private fun refreshPhrase() {
         binding.textviewMsgMotivation.text = phraseRepository.getPhrase(filter)
+        setStoredPhrase()
     }
 
+    /* Pega os dados salvos no shared preferences e exibe na tela */
+    private fun getStoredStrings() {
+        binding.textviewHello.text = securityPreferences.getString(MotivationConstants.KEY.USERNAME)
+        binding.textviewMsgMotivation.text = securityPreferences.getString(MotivationConstants.KEY.PHRASE)
+    }
+
+    /** Pega o nome do usuário armazenado na security preferences e exibe na tela */
     private fun getStoredUsername() {
         val username = securityPreferences.getString(MotivationConstants.KEY.USERNAME)
         binding.textviewHello.text = username
     }
 
+    private fun setStoredPhrase() {
+        securityPreferences.storeString(MotivationConstants.KEY.PHRASE, binding.textviewMsgMotivation.text.toString())
+    }
+
+    private fun getStoredPhrase() {
+        val phrase = securityPreferences.getString(MotivationConstants.KEY.PHRASE)
+        binding.textviewMsgMotivation.text = phrase
+    }
+
+    /** Filtra as frases e atualiza a cor do ícone selecionado */
     fun handleFilter(id: Int) {
-        binding.imageviewAll.setColorFilter(ContextCompat.getColor(this, R.color.dark_purple))
-        binding.imageviewHappy.setColorFilter(ContextCompat.getColor(this, R.color.dark_purple))
-        binding.imageviewSunny.setColorFilter(ContextCompat.getColor(this, R.color.dark_purple))
+        binding.imageviewAll.isSelected = false
+        binding.imageviewHappy.isSelected = false
+        binding.imageviewSunny.isSelected = false
 
         when (id) {
-            R.id.imageview_all ->  {
+            R.id.imageview_all -> {
                 filter = MotivationConstants.PHRASE.ALL
-                binding.imageviewAll.setColorFilter(ContextCompat.getColor(this, R.color.white))
+                binding.imageviewAll.isSelected = true
             }
-            R.id.imageview_happy ->  {
+
+            R.id.imageview_happy -> {
                 filter = MotivationConstants.PHRASE.HAPPY
-                binding.imageviewHappy.setColorFilter(ContextCompat.getColor(this, R.color.white))
+                binding.imageviewHappy.isSelected = true
             }
-            R.id.imageview_sunny ->  {
+
+            R.id.imageview_sunny -> {
                 filter = MotivationConstants.PHRASE.SUNNY
-                binding.imageviewSunny.setColorFilter(ContextCompat.getColor(this, R.color.white))
+                binding.imageviewSunny.isSelected = true
             }
         }
     }
 
+    /** Configura os listeners (eventos de clique) */
     private fun setListeners() {
         binding.buttonNewSentence.setOnClickListener(this)
-        println("Botão NOVA FRASE clicado")
         binding.imageviewAll.setOnClickListener(this)
-        println("Botão IMAGEVIEW ALL clicado")
         binding.imageviewHappy.setOnClickListener(this)
-        println("Botão IMAGEVIEW HAPPY clicado")
         binding.imageviewSunny.setOnClickListener(this)
-        println("Botão IMAGEVIEW SUNNY clicado")
     }
 }

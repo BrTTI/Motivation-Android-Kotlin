@@ -4,6 +4,7 @@ class MotivationConstants private constructor() {
 
     object KEY {
         const val USERNAME = "USERNAME"
+        const val PHRASE = "PHRASE"
 
     }
 

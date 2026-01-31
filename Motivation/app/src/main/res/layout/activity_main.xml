@@ -1,95 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-    <View
-        android:id="@+id/view_header"
-        android:layout_width="wrap_content"
-        android:layout_height="72dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:background="@color/purple" />
+    <LinearLayout
+        android:id="@+id/layout_header"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/purple"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageview_all"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_alignStart="@id/view_header"
-        android:layout_alignTop="@id/view_header"
-        android:layout_alignBottom="@id/view_header"
-        android:layout_marginStart="32dp"
+        <ImageView
+            android:id="@+id/imageview_all"
+            style="@style/FilterIconStyle"
+            android:layout_marginEnd="64dp"
+            android:contentDescription="@string/desc_ic_all"
+            android:src="@drawable/ic_all" />
 
-        android:contentDescription="@string/desc_ic_all"
-        android:src="@drawable/ic_all" />
+        <ImageView
+            android:id="@+id/imageview_happy"
+            style="@style/FilterIconStyle"
+            android:contentDescription="@string/desc_ic_happy"
+            android:src="@drawable/ic_happy" />
 
-    <ImageView
-        android:id="@+id/imageview_happy"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_alignTop="@id/view_header"
-        android:layout_alignBottom="@id/view_header"
-        android:layout_centerHorizontal="true"
-        android:contentDescription="@string/desc_ic_happy"
-        android:src="@drawable/ic_happy" />
-
-    <ImageView
-        android:id="@+id/imageview_sunny"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_alignTop="@id/view_header"
-        android:layout_alignEnd="@id/view_header"
-        android:layout_alignBottom="@id/view_header"
-        android:layout_marginEnd="32dp"
-        android:contentDescription="@string/desc_ic_sun"
-        android:src="@drawable/ic_sun" />
+        <ImageView
+            android:id="@+id/imageview_sunny"
+            style="@style/FilterIconStyle"
+            android:layout_marginStart="64dp"
+            android:contentDescription="@string/desc_ic_sun"
+            android:src="@drawable/ic_sun" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textview_hello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/view_header"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
         android:fontFamily="@font/cabin"
-        android:text="@string/title_hello"
-        android:textSize="20sp" />
+        android:text="@string/label_hello"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_header" />
 
     <TextView
         android:id="@+id/textview_msg_motivation"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_margin="8dp"
+        android:layout_marginHorizontal="16dp"
         android:fontFamily="@font/cabin"
-        android:text="@string/title_msg_motivation"
+        android:text="@string/label_msg_motivation"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="24sp" />
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:layout_width="200dp"
-        android:layout_height="4dp"
-        android:layout_below="@id/textview_msg_motivation"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_width="150dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/purple"
         android:elevation="2dp"
-        android:background="@color/purple" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_msg_motivation" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button_new_sentence"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
         android:layout_marginBottom="64dp"
-        android:backgroundTint="@color/purple"
         android:fontFamily="@font/cabin"
+        android:paddingHorizontal="32dp"
         android:text="@string/button_new_sentence"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:backgroundTint="@color/purple"
+        app:cornerRadius="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
